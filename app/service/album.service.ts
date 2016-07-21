@@ -17,7 +17,7 @@ export class AlbumService {
         return this.http.get(this.albumsUrl).map(this.extractData).catch(this.handleError)
     }
 
-    getTracks(albumId: string, artistId: string) : Observable<Track[]> {
+    getTracks(albumId: string, artistId: string) : Observable<Album> {
         let tracksUrl = `https://rawgit.com/livingstonese/musictube-data/master/tracks/${artistId}/${albumId}.json`;
         return this.http.get(tracksUrl).map(this.extractData).catch(this.handleError);
     }

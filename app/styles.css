@@ -13,14 +13,6 @@ img {
     background-color: rgb(40,40,40);
 }
 
-tbody>tr .material-icons {
-    color: rgba(255, 255, 255, 0.3);
-}
-
-tbody>tr .material-icons:hover {
-    color: rgba(255, 255, 255, 1);
-}
-
-tbody>tr .material-icons:active {
-    color: rgba(255, 255, 255, 0.3);
+.clickable:hover {
+    cursor: hand;
 }

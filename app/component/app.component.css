@@ -23,6 +23,6 @@ footer {
     bottom:0px;
     height:3rem;
     width:100%;
-    background:#999;
+    background:rgb(60,60,60);
     z-index: 1000;
 }

@@ -1,7 +1,10 @@
-import {Component, OnInit, NgZone} from '@angular/core';
+import {Component, OnInit, NgZone, OnDestroy} from '@angular/core';
 import {Album} from "../model/album";
 import {AlbumService} from "../service/album.service";
 import {Track} from "../model/track";
+import { ActivatedRoute } from '@angular/router';
+import {Subscription} from "rxjs/Subscription";
+import {PlayerService} from "../service/player.service";
 
 @Component({
     selector: 'album',
@@ -11,10 +14,14 @@ import {Track} from "../model/track";
 })
 export class AlbumComponent implements OnInit {
     album: Album;
-    tracks: Track[];
     errorMessage: string;
+    sub: Subscription;
 
-    constructor(private zone: NgZone, private albumService: AlbumService) {
+    constructor(private zone: NgZone, private albumService: AlbumService, private route: ActivatedRoute, private playerService: PlayerService) {
+    }
+
+    playTrack(track: Track): void {
+        this.playerService.playTrack(this.album, track);
     }
 
     ngOnInit() {
@@ -22,10 +29,25 @@ export class AlbumComponent implements OnInit {
     }
 
     getTracks() {
-        this.albumService.getTracks("2263135", "118522").subscribe(
-            tracks => this.zone.run(() => this.tracks = tracks),
-            error => this.errorMessage = <any>error
-        );
+        this.sub = this.route.params.subscribe(params => {
+            let albumId = params['albumId'];
+            let artistId = params['artistId'];
+            
+            this.albumService.getTracks(albumId, artistId)
+                .subscribe(
+                    album => this.zone.run(() => this.album = album),
+                    error => this.errorMessage = <any>error
+                );
+        });
+
+        // this.albumService.getTracks("2263135", "118522").subscribe(
+        //     tracks => this.zone.run(() => this.tracks = tracks),
+        //     error => this.errorMessage = <any>error
+        // );
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
     getTrackDuration(strDuration: string): string {
