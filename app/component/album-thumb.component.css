@@ -1,0 +1,25 @@
+.album-thumb-container {
+    background-color: rgb(40, 40, 40);
+}
+
+.album-thumb-data {
+    padding: 0.8rem 0.75rem 0.8rem 0.75rem;
+}
+
+.album-thumb-img {
+    width: 100%;
+}
+
+.album-thumb-name {
+    font-size: 0.9rem;
+    color: white;
+}
+.album-thumb-name:hover, .album-thumb-artist:hover {
+    text-decoration: underline;
+}
+
+.album-thumb-artist {
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+    color: rgb(160, 160, 160);
+}

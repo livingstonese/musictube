@@ -10,9 +10,10 @@ module.exports = {
     'angular2': [
       'rxjs',
       'reflect-metadata',
-      '@angular/core'
+      '@angular/core',
+      'ytdl-core'
     ],
-    'app': './app/app'
+    'app': ['./app/app' ]
   },
 
   output: {
@@ -24,7 +25,11 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['','.ts','.js','.json', '.css', '.html']
+    extensions: ['','.ts','.js','.json', '.css', '.html'],
+    alias: {
+      materializecss: 'materialize-css/dist/css/materialize.css',
+      materialize: 'materialize-css/dist/js/materialize.js',
+    }
   },
 
   module: {
@@ -33,13 +38,28 @@ module.exports = {
         test: /\.ts$/,
         loader: 'ts',
         exclude: [ /node_modules/ ]
-      }
+      },
+      {
+        test: /materialize-css\/dist\/js\/materialize\.js/,
+        loader: 'imports?materializecss'
+      },
+      { test: /materialize\.css$/,   loader: 'style-loader!css-loader' },
+      { test: /material\-icons\.css$/,   loader: 'style-loader!css-loader' },
+      { test: /\.css$/, loader: 'style-loader!css-loader', exclude: [ /node_modules/ ]},
+      { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
+      { test: /ytdl\-core\/test\/html5player\.json$/, loader: 'json-loader'}
     ]
   },
 
   plugins: [
     new CommonsChunkPlugin({ name: 'angular2', filename: 'angular2.js', minChunks: Infinity }),
-    new CommonsChunkPlugin({ name: 'common',   filename: 'common.js' })
+    new CommonsChunkPlugin({ name: 'common',   filename: 'common.js' }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
+      Hammer: "hammerjs/hammer"
+    })
   ],
   target:'node-webkit'
 };

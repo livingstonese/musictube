@@ -1,0 +1,28 @@
+#slide-out, #slide-out a {
+    background-color: rgb(40, 40, 40);
+    color: white!important;
+}
+
+#slide-out a:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+header, main {
+    padding-left: 240px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main {
+        padding-left: 0;
+    }
+}
+
+footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:3rem;
+    width:100%;
+    background:#999;
+    z-index: 1000;
+}

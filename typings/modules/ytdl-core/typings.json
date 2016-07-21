@@ -1,0 +1,11 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/JimmyBoh/node-ytdl-core/a1860b8/typings.json",
+    "raw": "github:JimmyBoh/node-ytdl-core#a1860b8",
+    "main": "./lib/index.d.ts",
+    "global": false,
+    "name": "ytdl-core",
+    "type": "typings"
+  }
+}

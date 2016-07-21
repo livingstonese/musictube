@@ -1,0 +1,131 @@
+<div style="display: flex; flex-direction: column">
+    <div style="display: flex;">
+        <div style="width: 150px;height: 150px;">
+            <img src="http://media.theaudiodb.com/images/media/album/thumb/xvtuqq1457460899.jpg/preview">
+        </div>
+        <div style="display: flex; flex-direction: column; padding-left: 1.5rem; justify-content: space-around">
+            <div style="font-size: 2.7rem">Naanum Rowdy Than</div>
+            <div style="font-size: 0.8rem">
+                <span>By</span>
+                <span>Anirudh Ravichander</span>
+            </div>
+            <div style="font-size: 0.8rem">
+                2015
+            </div>
+            <div style="font-size: 0.8rem">
+                6 songs, 24 min
+            </div>
+        </div>
+    </div>
+    <div style="display: flex;padding-top: 20px">
+        <a class="waves-effect waves-light btn">Play</a>
+        <a class="waves-effect waves-light btn" style="margin-left: 1.5rem;">Save</a>
+    </div>
+    <div style="padding-top: 1.5rem">
+        <table class="bordered highlight">
+            <colgroup>
+                <col width="100">
+                <col>
+                <col width="50">
+                <col width="50">
+                <col width="50">
+            </colgroup>
+            <thead style="font-size: 0.8rem; color: rgb(100,100,100)">
+            <tr>
+                <th style="text-align: center" data-field="id">#</th>
+                <th data-field="name">SONG</th>
+                <th style="text-align: center" data-field="time"><i class="material-icons">timer</i></th>
+                <th data-field="play"></th>
+                <th data-field="download"></th>
+            </tr>
+            </thead>
+
+            <tbody style="font-size: 0.9rem" *ngIf="tracks">
+            <tr *ngFor="let track of tracks">
+                <td style="text-align: center">{{track.trackNumber}}</td>
+                <td>{{track.title}}</td>
+                <td>{{}}</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">1</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">2</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            <tr>
+                <td style="text-align: center">3</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+                <td style="text-align: center"><i class="material-icons track-play">play_circle_filled</i></td>
+                <td><i class="material-icons">file_download</i></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<div *ngIf="albums" class="row">
+    <div *ngFor="let album of albums" class="col s6 m4 l3">
+        <album-thumb [album]="album"></album-thumb>
+    </div>
+</div>
