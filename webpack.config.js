@@ -11,6 +11,7 @@ module.exports = {
       'rxjs',
       'reflect-metadata',
       '@angular/core',
+      '@angular/router',
       'ytdl-core'
     ],
     'app': ['./app/app' ]

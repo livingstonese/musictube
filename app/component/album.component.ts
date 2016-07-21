@@ -30,8 +30,11 @@ export class AlbumComponent implements OnInit {
 
     getTrackDuration(strDuration: string): string {
         var duration = parseInt(strDuration);
-        var mins = duration / 60;
-        var secs = duration % 60;
-        return "${mins}:${secs}";
+        var totalsecs = duration / 1000;
+        var mins = Math.floor(totalsecs / 60);
+        var secs = totalsecs % 60;
+        var strSecs = secs < 10 ? `0${secs}` : `${secs}`;
+        var ret = `${mins}:${strSecs}`;
+        return ret;
     }
 }

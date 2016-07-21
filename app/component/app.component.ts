@@ -1,22 +1,24 @@
 import {Component, OnInit, NgZone} from '@angular/core';
+import {Router} from '@angular/router';
 import {MaterializeDirective} from "angular2-materialize";
 import * as ytdl from "ytdl-core";
 import {AlbumService} from "../service/album.service"
 import {AlbumListComponent} from "./album-list.component"
 import {AlbumComponent} from "./album.component";
 import {PlayerComponent} from "./player.component";
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     selector: 'app',
     templateUrl: 'component/app.component.html',
     styleUrls: [ 'component/app.component.css' ],
-    directives: [ MaterializeDirective, AlbumListComponent, AlbumComponent, PlayerComponent ],
+    directives: [ MaterializeDirective, AlbumListComponent, AlbumComponent, PlayerComponent, ROUTER_DIRECTIVES ],
     providers: [ AlbumService ]
 })
 export class App implements OnInit {
     errorMessage: string;
 
-    constructor(private zone: NgZone, private albumService: AlbumService) {
+    constructor(private router: Router, private zone: NgZone, private albumService: AlbumService) {
     }
 
     ngOnInit() {

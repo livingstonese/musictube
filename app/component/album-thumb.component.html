@@ -6,7 +6,8 @@
             </a>
 
             <div class="album-thumb-data">
-                <a href="#" class="album-thumb-name truncate">{{album.name}}</a>
+                <a [routerLink]="['/viewAlbum']" class="album-thumb-name truncate">{{album.name}}</a>
+                <!--<a href="#" class="album-thumb-name truncate">{{album.name}}</a>-->
                 <a href="#" class="album-thumb-artist truncate">{{album.artist}}</a>
             </div>
         </div>
