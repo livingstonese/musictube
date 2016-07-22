@@ -1,14 +1,13 @@
 <div class="row">
     <div class="col s12">
         <div class="album-thumb-container">
-            <a href="#">
+            <a [routerLink]="['/album', album.id, '/artist', album.artistId]">
                 <img class="album-thumb-img" src="{{album.albumArt}}" />
             </a>
 
             <div class="album-thumb-data">
-                <a [routerLink]="['/album', album.id, '/artist', album.artistId]" class="album-thumb-name truncate">{{album.name}}</a>
-                <!--<a href="#" class="album-thumb-name truncate">{{album.name}}</a>-->
-                <a href="#" class="album-thumb-artist truncate">{{album.artist}}</a>
+                <a [routerLink]="['/album', album.id, '/artist', album.artistId]" class="album-thumb-name truncate">{{album.title}}</a>
+                <a href="#" class="album-thumb-artist truncate">{{album.artistName}}</a>
             </div>
         </div>
     </div>

@@ -2,9 +2,9 @@ import {Track} from "./track";
 
 export class Album {
     id:string;
-    name:string;
+    title:string;
     artistId:string;
-    artist:string;
+    artistName:string;
     albumArt:string;
     year:number;
     tracks:Track[];

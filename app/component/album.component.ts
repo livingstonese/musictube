@@ -32,15 +32,6 @@ export class AlbumComponent implements OnInit {
 
     ngOnInit() {
         this.getTracks();
-        ffmpeg("/Users/livingstone.se/Music/MusicTube/temp/Thangamey.m4a")
-            .output("/Users/livingstone.se/Music/MusicTube/Anirudh Ravichander/Naanum Rowdy Dhaan/Thangamey.mp3")
-            .audioCodec('libmp3lame')
-            .audioBitrate('128k')
-            .on('start', function(command) {console.log('Start: ', command);})
-            .on('error', function(err) {console.log('An error occurred: ' + err.message);})
-            .on('end', function(stdout, stderr) {
-                console.log('Transcoding succeeded !');
-            }).run();
     }
 
     getTracks() {
@@ -68,8 +59,11 @@ export class AlbumComponent implements OnInit {
     getTrackDuration(strDuration: string): string {
         var duration = parseInt(strDuration);
         var totalsecs = duration / 1000;
+        if (totalsecs == 0) {
+            return '';
+        }
         var mins = Math.floor(totalsecs / 60);
-        var secs = totalsecs % 60;
+        var secs = Math.floor(totalsecs % 60);
         var strSecs = secs < 10 ? `0${secs}` : `${secs}`;
         var ret = `${mins}:${strSecs}`;
         return ret;

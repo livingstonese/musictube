@@ -90,24 +90,27 @@ export class DownloadService {
     }
 
     processDownloadRequest(task: DownloadItemInternal, callback: ErrorCallback) {
-        console.log("Starting download of " + task.album.name + " - " + task.track.title);
+        console.log("Starting download of " + task.album.title + " - " + task.track.title);
         // task.downloadService.youtubeService.getAudioUrl(task.track.youtubeLink, task);
         let tmpDir = path.join(task.downloadService.downloadDir, "temp");
         let tempFilePath = path.join(tmpDir, task.track.title + ".m4a");
         let tempFileWriteStream = task.downloadService.youtubeService.downloadAudio(task.track.youtubeLink, tempFilePath);
+        tempFileWriteStream.on('error', (err:any) => {
+            callback(err);
+        });
         tempFileWriteStream.on('finish', () => {
-            var dir = path.join(task.downloadService.downloadDir, task.album.artist);
+            var dir = path.join(task.downloadService.downloadDir, task.album.artistName);
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir);
             }
-            dir = path.join(dir, task.album.name);
+            dir = path.join(dir, task.album.title);
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir);
             }
             var filePath = path.join(dir, task.track.title + ".mp3");
             var albumArtPath = path.join(dir, "album.jpg");
             task.downloadService.download(task.album.albumArt, albumArtPath, () => {
-                console.log("Saved album art for " + task.album.name);
+                console.log("Saved album art for " + task.album.title);
                 ffmpeg(tempFilePath)
                     .audioCodec('libmp3lame')
                     .audioBitrate('128k')
@@ -120,9 +123,9 @@ export class DownloadService {
                             console.log("Deleted " + tempFilePath);
                             var tags = {
                                 title: task.track.title,
-                                artist: task.album.artist,
-                                album: task.album.name,
-                                composer: task.album.artist,
+                                artist: task.album.artistName,
+                                album: task.album.title,
+                                composer: task.album.artistName,
                                 image: albumArtPath,
                                 trackNumber: task.track.trackNumber
                             };

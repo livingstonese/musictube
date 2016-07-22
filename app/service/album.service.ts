@@ -10,7 +10,7 @@ import '../util/rxjs-operators';
 export class AlbumService {
     constructor (private http: Http) {}
 
-    private albumsUrl = "https://rawgit.com/livingstonese/musictube-data/master/albums.json";
+    private albumsUrl = "https://rawgit.com/sindhusv/musictube-data/master/albums.json";
     private sampleTracksUrl = "https://rawgit.com/livingstonese/musictube-data/master/tracks/<artist id>/<album id>.json";
 
     getAlbums() : Observable<Album[]> {
@@ -18,7 +18,7 @@ export class AlbumService {
     }
 
     getTracks(albumId: string, artistId: string) : Observable<Album> {
-        let tracksUrl = `https://rawgit.com/livingstonese/musictube-data/master/tracks/${artistId}/${albumId}.json`;
+        let tracksUrl = `https://rawgit.com/sindhusv/musictube-data/master/tracks/${artistId}/${albumId}.json`;
         return this.http.get(tracksUrl).map(this.extractData).catch(this.handleError);
     }
 
