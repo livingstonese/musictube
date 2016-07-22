@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as ytdl from "ytdl-core";
 import fs = require("fs");
+import {Writable} from "stream";
 
 export interface YoutubeServiceCallback {
     youtubeCallback(audioUrl: string): void;
@@ -25,12 +26,14 @@ export class YoutubeService {
         });
     }
 
-    downloadAudio(youtubeLink: string, filepath: string) {
+    downloadAudio(youtubeLink: string, filepath: string): Writable {
         let options = {
             filter: function (format:ytdl.VideoFormat) {
                 return format.type.startsWith("audio/mp4");
             }
         };
-        ytdl("https://www.youtube.com/watch?v=" + youtubeLink, options).pipe(fs.createWriteStream(filepath));
+        let writeStream = fs.createWriteStream(filepath);
+        ytdl("https://www.youtube.com/watch?v=" + youtubeLink, options).pipe(writeStream);
+        return writeStream;
     }
 }

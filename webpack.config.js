@@ -12,7 +12,8 @@ module.exports = {
       'reflect-metadata',
       '@angular/core',
       '@angular/router',
-      'ytdl-core'
+      'ytdl-core',
+      'fluent-ffmpeg'
     ],
     'app': ['./app/app' ]
   },

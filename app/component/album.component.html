@@ -19,7 +19,7 @@
     </div>
     <div style="display: flex;padding-top: 20px">
         <a class="waves-effect waves-light btn">Play</a>
-        <a class="waves-effect waves-light btn" style="margin-left: 1.5rem;">Save</a>
+        <a (click)="downloadService.addAlbumDownload(album)" class="waves-effect waves-light btn" style="margin-left: 1.5rem;">Save</a>
     </div>
     <div style="padding-top: 1.5rem">
         <table class="bordered highlight">

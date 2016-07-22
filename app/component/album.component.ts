@@ -6,6 +6,10 @@ import { ActivatedRoute } from '@angular/router';
 import {Subscription} from "rxjs/Subscription";
 import {PlayerService} from "../service/player.service";
 import {DownloadService} from "../service/download.service";
+import path = require("path");
+import fs = require("fs");
+import {YoutubeService} from "../service/youtube.service";
+import ffmpeg = require('fluent-ffmpeg');
 
 @Component({
     selector: 'album',
@@ -28,6 +32,15 @@ export class AlbumComponent implements OnInit {
 
     ngOnInit() {
         this.getTracks();
+        ffmpeg("/Users/livingstone.se/Music/MusicTube/temp/Thangamey.m4a")
+            .output("/Users/livingstone.se/Music/MusicTube/Anirudh Ravichander/Naanum Rowdy Dhaan/Thangamey.mp3")
+            .audioCodec('libmp3lame')
+            .audioBitrate('128k')
+            .on('start', function(command) {console.log('Start: ', command);})
+            .on('error', function(err) {console.log('An error occurred: ' + err.message);})
+            .on('end', function(stdout, stderr) {
+                console.log('Transcoding succeeded !');
+            }).run();
     }
 
     getTracks() {

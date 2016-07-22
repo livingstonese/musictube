@@ -26,6 +26,10 @@ export class PlayerService {
         }
     }
 
+    playAlbum(album: Album) {
+        
+    }
+
     registerListener(listener: TrackListener) {
         this.listeners.push(listener);
     }
