@@ -5,19 +5,21 @@ import {Track} from "../model/track";
 import { ActivatedRoute } from '@angular/router';
 import {Subscription} from "rxjs/Subscription";
 import {PlayerService} from "../service/player.service";
+import {DownloadService} from "../service/download.service";
 
 @Component({
     selector: 'album',
     templateUrl: 'component/album.component.html',
     styleUrls: [ 'component/album.component.css' ],
-    providers: [ AlbumService ]
+    providers: [ AlbumService, DownloadService ]
 })
 export class AlbumComponent implements OnInit {
     album: Album;
     errorMessage: string;
     sub: Subscription;
 
-    constructor(private zone: NgZone, private albumService: AlbumService, private route: ActivatedRoute, private playerService: PlayerService) {
+    constructor(private zone: NgZone, private albumService: AlbumService, private route: ActivatedRoute,
+                private playerService: PlayerService, private downloadService: DownloadService) {
     }
 
     playTrack(track: Track): void {

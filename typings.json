@@ -2,6 +2,7 @@
   "name": "image-size-calculator",
   "dependencies": {},
   "globalDependencies": {
+    "async": "registry:dt/async#1.4.2+20160602152629",
     "moment": "registry:dt/moment#2.8.0+20160316155526"
   }
 }

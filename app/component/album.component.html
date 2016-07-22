@@ -46,7 +46,7 @@
                 <td>{{track.title}}</td>
                 <td>{{getTrackDuration(track.duration)}}</td>
                 <td style="text-align: center"><i (click)="playTrack(track)" class="material-icons track-play clickable">play_circle_filled</i></td>
-                <td><i class="material-icons clickable">file_download</i></td>
+                <td><i (click)="downloadService.addDownload(album, track)" class="material-icons clickable">file_download</i></td>
             </tr>
             </tbody>
         </table>
